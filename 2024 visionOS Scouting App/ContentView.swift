@@ -50,7 +50,7 @@ struct ContentView: View {
             var body: some View {
                 NavigationStack{
                     ScrollView{
-                        VStack (alignment: .leading, spacing: 15){
+                        VStack (alignment: .trailing, spacing: 15){
                             Group{
                                 HStack {
                                     Text("Crescendo Scouting App")
@@ -66,15 +66,18 @@ struct ContentView: View {
                                         .frame(maxWidth: .infinity, alignment: .center)
                                 }.frame(alignment: .center)
                                 HStack{
-                                    Text("Student ID:")
+                                    Text("Student #:")
                                         .font(.headline)
-                                    TextField("Student ID", text:$StudentID)
-                                    Text("Team Number:")
+                                    TextField("20012345", text:$StudentID)
+                                        .keyboardType(.numberPad)
+                                    Text("Team #:")
                                         .font(.headline)
-                                    TextField("Team Number", text:$TeamNumber)
-                                    Text("Match Number:")
+                                    TextField("548", text:$TeamNumber)
+                                        .keyboardType(.numberPad)
+                                    Text("Match #:")
                                         .font(.headline)
-                                    TextField("Match Number", text:$MatchNumber)
+                                    TextField("80", text:$MatchNumber)
+                                        .keyboardType(.numberPad)
                                 }
                                 .frame(alignment: .center)
                                 .padding(.top, 10.0)
@@ -93,7 +96,7 @@ struct ContentView: View {
                                 HStack{
                                     Text("Robot Left Starting Area?")
                                         .font(.headline)
-                                        .frame(alignment: .center)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
                                     
                                     Picker(selection: $LeftStarting,
                                            label: Text("Left Starting?")) {
@@ -110,45 +113,49 @@ struct ContentView: View {
                                                 }
                                             }
                                     }
-                                           .accentColor(.orange)
-                                           .bold()
-                                           .padding(3.0)
-                                           .frame(height: 30)
-                                           .frame(width: 150)
+                                           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                           .controlSize(.extraLarge)
+//                                           .accentColor(.orange)
+//                                           .bold()
+//                                           .padding(3.0)
+//                                           .frame(height: 30)
+//                                           .frame(width: 150)
                                            .pickerStyle(SegmentedPickerStyle())
-                                           .frame(alignment: .center)
                                 }
                                 .padding(.top, 1)
-                                .padding(.leading, 15)
                                        
                                 HStack{
                                     Text("Amp Notes: \(autoAmp)")
                                         .font(.headline)
-                                        .padding(.trailing, 20)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
+//                                        .padding(.trailing, 40)
                                     
                                     Stepper("", value:$autoAmp, in: 0...100, step: 1)
-                                        .frame(height: 40)
-                                        .frame(width: 60)
+                                       .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
+                                        .controlSize(.extraLarge)
                                        
                                 }
-                                .padding(.leading, 15)
+                                .padding(.top, 15)
+                                .frame(alignment: .trailing)
                                 .onChange(of: autoAmp) { newValue in
                                     autoAmpValue = "\(newValue)"
                                 }
+                                
                             }
                             HStack{
                                 Text("Speaker Notes: \(autoSpeaker)")
                                     .font(.headline)
-                                    .padding(.trailing, 20)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
+//                                    .padding(.trailing, 40)
                                 
                                 
                                 Stepper("", value:$autoSpeaker, in: 0...100, step: 1)
-                                    .fixedSize()
-                                    .frame(height: 40)
-                                    .frame(width: 60)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                    .controlSize(.extraLarge)
                                             
                             }
-                            .padding(.leading, 15)
+                            .padding(.top, 15)
+                            .frame(alignment: .trailing)
                             .onChange(of: autoSpeaker) { newValue in
                                 autoSpeakerValue = "\(newValue)"
                             }
@@ -164,6 +171,7 @@ struct ContentView: View {
                                 HStack{
                                     Text("Defense Bot?")
                                         .font(.headline)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
                                     
                                     Picker(selection: $Defensebot,
                                            label: Text("Defense Bot?")) {
@@ -180,43 +188,46 @@ struct ContentView: View {
                                                 }
                                             }
                                     }
-                                           .accentColor(.orange)
-                                           .bold()
-                                           .padding(3.0)
-                                           .frame(height: 30)
-                                           .frame(width: 150)
+                                           .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                           .controlSize(.extraLarge)
+//                                           .accentColor(.orange)
+//                                           .bold()
+//                                           .padding(3.0)
+//                                           .frame(height: 30)
+//                                           .frame(width: 150)
                                            .pickerStyle(SegmentedPickerStyle())
                                 }
-                                .padding(.top, 1)
-                                .padding(.leading, 15)
+//                                .padding(.top, 1)
+//                                .padding(.leading, 15)
+//                                .frame(maxWidth: .infinity, alignment: .center)
                                 
                                 HStack{
                                     Text("Amp Notes: \(teleAmp)")
                                         .font(.headline)
-                                        .padding(.trailing, 20)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
                                     
                                     
                                     Stepper("", value:$teleAmp, in: 0...100, step: 1)
-                                        .fixedSize()
-                                        .frame(height: 40)
-                                        .frame(width: 60)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                        .controlSize(.extraLarge)
                                         
                                 }
-                                .padding(.leading, 15)
+                                .padding(.top, 15)
+                                .frame(maxWidth: .infinity, alignment: .center)
                                 .onChange(of: teleAmp) { newValue in
                                     teleAmpValue = "\(newValue)"
                                 }
                                 HStack{
                                     Text("Speaker Notes: \(teleSpeaker)")
                                         .font(.headline)
-                                        .padding(.trailing, 20)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
                                     
                                     Stepper("", value:$teleSpeaker, in: 0...100, step: 1)
-                                        .fixedSize()
-                                        .frame(height: 40)
-                                        .frame(width: 60)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                        .controlSize(.extraLarge)
                                 }
-                                .padding(.leading, 15)
+                                .padding(.top, 15)
+                                .frame(maxWidth: .infinity, alignment: .center)
                                 .onChange(of: teleSpeaker) { newValue in
                                     teleSpeakerValue = "\(newValue)"
                                 }
@@ -266,6 +277,7 @@ struct ContentView: View {
 //                                            .cornerRadius(10)
                                     }
                                 }
+                                .padding(.top, 15)
                                 .frame(maxWidth: .infinity, alignment: .center)
                                 .onChange(of: elapsedTime) { newValue in
                                     TimerValue = String(format: "%.2f", newValue)
@@ -274,21 +286,21 @@ struct ContentView: View {
                                 HStack{
                                     Text("Notes in Trap: \(Noteintrap)")
                                         .font(.headline)
-                                        .padding(.trailing, 20)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
                                     
-                                    Stepper("", value:$Noteintrap, in: 0...100, step: 1)
-                                        .fixedSize()
-                                        .frame(height: 40)
-                                        .frame(width: 60)
+                                    Stepper("", value:$Noteintrap, in: 0...3, step: 1)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                        .controlSize(.extraLarge)
                                 }
-                                .padding(.leading, 15)
-                                .padding(.top, -15)
+                                .padding(.top, 15)
+                                .frame(maxWidth: .infinity, alignment: .center)
                                 .onChange(of: Noteintrap) { newValue in
                                     NoteintrapValue = "\(newValue)" }
                                    
                                 HStack{
                                     Text("Finishing Position?")
                                         .font(.headline)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
 
                                     Picker(selection: $Finishingposition,
                                            label: Text("Note in Trap?")) {
@@ -311,23 +323,22 @@ struct ContentView: View {
                                                 }
                                             }
                                     }
-//                                           .padding()
-//                                           .frame(height: 40)
-//                                           .frame(width: 200)
-//                                           .background(Color.gray)
-//                                           .cornerRadius(10)
-//                                           .accentColor(.white)
-//                                           .font(.system(size: 20))
-                                           .multilineTextAlignment(.center)
+                                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                    .controlSize(.extraLarge)
                                 }
                                 .padding(.leading, 15)
+                                
                                 HStack{
                                     Text("Comments:")
+                                        .font(.headline)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
                                     TextField("Died, Fast Cycles, etc.", text:$Comments)
+                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                                        .controlSize(.extraLarge)
                                 }
-                                .font(.headline)
-                                .padding(.leading, 15)
-                                .padding(.top, 10.0)
+                                .padding(.top, 15)
+                                
+                                
                                 Group{
                                     HStack{
                                         let data1 = StudentID + ","
@@ -350,20 +361,17 @@ struct ContentView: View {
                                         
                                         NavigationLink(destination: QRView(string: data)){
                                             Text("Done")
-//                                                .accentColor(.white)
-//                                                .padding(20)
-//                                                .frame(height: 60)
-//                                                .frame(width: 100)
-//                                                .background(Color.orange)
-//                                                .cornerRadius(10)
-//                                                .font(.title2)
                                         }
+                                        .padding(.top, 20)
                                         .frame(maxWidth: .infinity, alignment: .center)
-                                        .disabled(TeamNumber.isEmpty || MatchNumber.isEmpty || StudentID.count != 8)
+                                        .controlSize(.large)
+                                        .disabled(TeamNumber.isEmpty || MatchNumber.isEmpty || StudentID.count < 1)
                                     }
                                 }
                             }
                         }
+                        .padding(.leading, 30)
+                        .padding(.trailing, 30)
                     }
                 }
             }
@@ -383,6 +391,7 @@ struct ContentView: View {
                     .frame(height: 350)
                     .frame(width: 350)
                 VStack{
+                    ShareLink(item: string)
                     Button("Next Match") {
                         navigateToNextView = true
                     }

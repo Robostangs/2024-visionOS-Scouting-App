@@ -13,5 +13,6 @@ struct _024_visionOS_Scouting_AppApp: App {
         WindowGroup {
             ContentView()
         }
+        .defaultSize(width: 600, height: 1200)
     }
 }
