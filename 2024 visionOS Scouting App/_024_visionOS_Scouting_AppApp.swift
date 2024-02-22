@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import _RealityKit_SwiftUI
 
 @main
 struct _024_visionOS_Scouting_AppApp: App {
